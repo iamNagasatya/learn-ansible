@@ -32,4 +32,4 @@
   - name: copy index.html to remote
     copy:
       src: index.html
-      dest: /var/www/index.html 
+      dest: /var/www/html
