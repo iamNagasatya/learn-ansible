@@ -1,0 +1,17 @@
+---
+- name: install and uninstall packages using loops
+  hosts: all
+  become: true
+  gather_facts: yes
+
+  tasks:
+  - name: lets use loops for install and uninstalling packages
+    yum:
+      name: "{{item.pkg}}"
+      state: "{{item.status}}"
+    loop: 
+    - { pkg : "git", status: "present" }
+    - { pkg : "make", status: "present" }
+    - { pkg : "wget", status: "absent" }
+    - { pkg : "tree", status: "absent" }
+      
