@@ -1,0 +1,13 @@
+- name: install package
+  hosts: all
+  become: true
+  gather_facts: no
+  tasks:
+    - name: install httpd
+      yum:
+        name: httpd
+        state: present
+    - name: start httpd
+      service:
+        name: httpd
+        state: started
