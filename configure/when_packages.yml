@@ -28,3 +28,8 @@
       name: apache2
       state: started
     when: ansible_os_family == "Debian"
+  
+  - name: copy index.html to remote
+    copy:
+      src: index.html
+      dest: /var/www/index.html 
