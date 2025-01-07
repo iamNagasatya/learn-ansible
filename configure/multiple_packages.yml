@@ -1,0 +1,12 @@
+---
+- name: install multiple packages
+  hosts: all
+  become: true
+  gather_facts: no
+
+  tasks:
+  - name: install httpd, git, tree
+    yum: 
+      name: "['git', 'tree', 'httpd']"
+      state: present
+    
