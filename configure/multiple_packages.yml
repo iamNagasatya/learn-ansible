@@ -7,6 +7,6 @@
   tasks:
   - name: install httpd, git, tree
     yum: 
-      name: "['git', 'tree', 'httpd']"
+      name: ['git', 'tree', 'httpd']
       state: present
     
