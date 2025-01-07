@@ -9,4 +9,9 @@
         path: ~/hello
         state: touch
         mode: 0744
+    - name: create directory
+      file:
+        path: /satya/sai
+        state: directory
+        mode: 0744
         
