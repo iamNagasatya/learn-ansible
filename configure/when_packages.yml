@@ -10,17 +10,19 @@
       name: httpd
       state: present
     when: ansible_os_family == "RedHat"
-  - name: start httpd
-    service:
-      name: httpd
-      state: started
-    when: ansible_os_family == "RedHat"
   
   - name: install apache2
     apt:
       name: apache2
       state: present
     when: ansible_os_family == "Debian"
+  
+  - name: start httpd
+    service:
+      name: httpd
+      state: started
+    when: ansible_os_family == "RedHat"
+  
   - name: start apache2
     service:
       name: apache2
