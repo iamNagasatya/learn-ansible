@@ -1,0 +1,12 @@
+---
+- name: create file
+  hosts: all
+  become: true
+  gather_facts: no
+  tasks:
+    - name: create hello file
+      file:
+        path: ~/hello
+        state: touch
+        mode: 0744
+        
