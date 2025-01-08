@@ -1,0 +1,18 @@
+---
+- name: creating users dynamically using vars 
+  hosts: all
+  become: true
+  gather_facts: yes
+  vars_files:
+  - users.yml
+  tasks:
+  - name: create user {{ user_name }}
+    user:
+      name: "{{ user_name }}"
+  - name: create a directory
+    file:
+      path: /opt/{{ user_name }}
+      state: directory
+      owner: "{{ user_name }}"
+      group: "{{ user_name }}"
+      mode: 0755
