@@ -19,6 +19,7 @@ resource "ansible_host" "servers" {
   variables = {
     ansible_user = var.instances[each.key].default_username
   }
+  depends_on = [ aws_instance.webserver[each.key] ]
 }
 
 
