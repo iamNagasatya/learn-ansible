@@ -1,0 +1,22 @@
+---
+- hosts: localhost
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: download transaction list from l33t
+    block:
+    - get_url:
+        url: http://apps.l33t.com/transaction_list
+        dest: /home/ansible/transaction_list
+    - debug:
+        msg: "File downloaded."
+    - replace:
+        path: /home/ansible/transaction_list
+        regexp: '#BLANKLINE'
+        replace: '\n'
+    rescue:
+    - debug:
+        msg: "l33t.com appears to be down. Try again later."
+    always:
+    - debug:
+        msg: "Attempt Completed"
